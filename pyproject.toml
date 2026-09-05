@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling==1.32.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "everyinfra-docs-crawler"
+version = "0.1.0.dev0"
+description = "Bounded, source-linked documentation crawler for authorized websites, built with Scrapy."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["web-crawler", "documentation", "scrapy", "source-provenance", "robots-txt"]
+dependencies = ["Scrapy==2.18.0"]
+
+[project.urls]
+Homepage = "https://everyinfra.com"
+
+[project.scripts]
+everyinfra-docs = "everyinfra_docs.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/everyinfra_docs"]
+
+[tool.uv]
+package = true
+build-constraint-dependencies = [
+    "hatchling==1.32.0",
+    "packaging==26.3",
+    "pathspec==1.1.1",
+    "pluggy==1.6.0",
+    "tomlkit==0.15.1",
+    "trove-classifiers==2026.6.1.19",
+]

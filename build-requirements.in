@@ -1,0 +1,2 @@
+# Isolated build backend; resolve with hashes into build-constraints.txt.
+hatchling==1.32.0

@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Python 3.12 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install uv and Python
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: "0.11.29"
+          python-version: "3.12"
+          enable-cache: true
+      - name: Restore locked environment
+        run: uv sync --locked --python 3.12
+      - name: Run behavior and supply-chain tests
+        run: uv run --locked python -m unittest discover -s tests -v
+      - name: Run bounded resource fixtures on Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: uv run --locked python scripts/resource_probe.py --output outputs/ci-resource-probe
+      - name: Build twice with hashed build constraints
+        run: |
+          uv build --wheel --build-constraints build-constraints.txt --require-hashes --out-dir outputs/build-a
+          uv build --wheel --build-constraints build-constraints.txt --require-hashes --out-dir outputs/build-b
+      - name: Verify wheel contents, license and reproducibility
+        run: >-
+          uv run --locked python scripts/verify_wheel.py
+          outputs/build-a/everyinfra_docs_crawler-0.1.0.dev0-py3-none-any.whl
+          outputs/build-b/everyinfra_docs_crawler-0.1.0.dev0-py3-none-any.whl
+          --output outputs/wheel-verification.json
