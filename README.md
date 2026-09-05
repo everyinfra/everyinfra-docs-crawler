@@ -1,5 +1,8 @@
 # EveryInfra Docs Crawler: bounded, source-linked documentation crawling
 
+[![CI](https://github.com/everyinfra/everyinfra-docs-crawler/actions/workflows/ci.yml/badge.svg)](https://github.com/everyinfra/everyinfra-docs-crawler/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-0ACAB5.svg)](LICENSE)
+
 基于 Scrapy 的有界文档采集原型：从一个明确授权的站点读取 HTML，输出带来源链接的 JSON 记录和 CSV 文档数据。
 
 EveryInfra Docs Crawler is a robots-first, budget-aware web crawler for documentation websites you are authorized to access. It exports source-linked JSON and CSV evidence while enforcing an exact origin, page and request budgets, candidate limits, response-size limits, and fail-closed robots checks.

@@ -4,7 +4,7 @@ This page separates implementation, local evidence, and claims that have not yet
 
 ## Current local evidence
 
-Tested on Python 3.12.11 and macOS arm64 with Scrapy 2.18.0:
+Local evidence was collected on Python 3.12.11 and macOS arm64 with Scrapy 2.18.0. The initial public CI run also completed on Python 3.12 for Ubuntu and macOS:
 
 - 25 unit and subprocess integration tests passed in one run. They cover exact-origin admission, URL and budget validation, robots behavior, redirects, error classification, output non-overwrite, CSV formula safety, response-size enforcement, and rejection of undecoded content encodings.
 - 22 resource scenarios passed in two batches. They cover supported compression paths and 4 MiB limit failures, malformed and unsupported encodings, 10,000 discovered links with a 25-candidate cap, a 40,000-node synthetic DOM, 300 sequential pages, and 1,000 paced sequential pages.
@@ -29,7 +29,7 @@ Every output directory must be new. Resource probes enforce test-process guards,
 
 ## Not yet verified
 
-- Linux and Windows installation and behavior
+- Windows installation and behavior
 - Long-running or concurrent production workloads
 - DNS rebinding defense or complete SSRF isolation
 - JavaScript-rendered pages, authenticated content, PDFs, and media
@@ -37,6 +37,6 @@ Every output directory must be new. Resource probes enforce test-process guards,
 - Search indexing, ranking, AI mention, citation, traffic, or conversion outcomes
 - A GitHub Release, package upload, or deployment
 
-This repository uses the reviewed 25-file allowlist-only source boundary. The copied publication candidate passed the same 25-test suite before the initial push. A dual-platform GitHub Actions workflow pins third-party actions to commit SHAs and pins uv 0.11.29, but Linux remains unverified until that workflow succeeds. The local Docker CLI was present while the daemon was unavailable, so no container result is being substituted for Linux evidence.
+This repository uses the reviewed 25-file allowlist-only source boundary. The copied publication candidate passed the same 25-test suite before the initial push. [GitHub Actions run 33939102052](https://github.com/everyinfra/everyinfra-docs-crawler/actions/runs/33939102052) then passed on Ubuntu and macOS; Ubuntu completed the bounded resource fixtures as well. The workflow pins third-party actions to exact Node 24 commits and pins uv 0.11.29. Windows, longer-duration production behavior, and the other limits above remain unverified.
 
 See [SECURITY.md](SECURITY.md) for deployment and reporting boundaries and [THIRD_PARTY.md](THIRD_PARTY.md) for dependency ownership and licensing limits.

@@ -64,7 +64,7 @@ Exclusion does not authorize deletion. These files remain local evidence or repr
 - [x] Rebuilt twice after the final source change: byte-identical wheel, exact source payload, `License-Expression: MIT`, `License-File: LICENSE`, and matching license bytes.
 - [x] Prepared an allowlist-only public-tree copy; membership, regular-file type, local Markdown links, absolute local paths and private-key blocks passed targeted checks. `gitleaks` is not installed, so this is not a universal secret scan.
 - [x] Ran the 25-test suite from the copied public tree with imports proven to resolve from that copy; all passed.
-- [ ] Obtain Linux CI evidence; a commit-SHA-pinned Ubuntu/macOS workflow is prepared but has not run. The local Docker CLI could not reach its daemon, so no container result is claimed.
+- [x] Obtain Linux and macOS CI evidence. The initial GitHub Actions run completed the 25-test suite, duplicate wheel build, and wheel verification on both platforms; Ubuntu also completed the bounded resource fixtures. Third-party actions are pinned to exact Node 24 commits.
 - [x] Refreshed 41 exact PyPI name/version queries on 2026-09-05; all responses returned without pagination and `PYSEC-2017-83` remains visible for Scrapy 2.18.0.
 - [x] Review the exact repository identity and 25-file source boundary before the initial public push.
 
