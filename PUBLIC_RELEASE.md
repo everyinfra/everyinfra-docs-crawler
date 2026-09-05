@@ -68,4 +68,4 @@ Exclusion does not authorize deletion. These files remain local evidence or repr
 - [x] Refreshed 41 exact PyPI name/version queries on 2026-09-05; all responses returned without pagination and `PYSEC-2017-83` remains visible for Scrapy 2.18.0.
 - [x] Review the exact repository identity and 25-file source boundary before the initial public push.
 
-The initial source publication does not create a GitHub Release, upload a package, deploy a service, change another account, or send email.
+Source publication, a GitHub Release, package-registry upload and deployment are separate states. Verify each independently; this source manifest does not by itself prove any of them.

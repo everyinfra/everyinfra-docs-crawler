@@ -35,7 +35,7 @@ Every output directory must be new. Resource probes enforce test-process guards,
 - JavaScript-rendered pages, authenticated content, PDFs, and media
 - General compatibility across external documentation platforms
 - Search indexing, ranking, AI mention, citation, traffic, or conversion outcomes
-- A GitHub Release, package upload, or deployment
+- A package-registry upload or deployment; GitHub Release state is verified separately
 
 This repository uses the reviewed 25-file allowlist-only source boundary. The copied publication candidate passed the same 25-test suite before the initial push. [GitHub Actions run 33939102052](https://github.com/everyinfra/everyinfra-docs-crawler/actions/runs/33939102052) then passed on Ubuntu and macOS; Ubuntu completed the bounded resource fixtures as well. The workflow pins third-party actions to exact Node 24 commits and pins uv 0.11.29. Windows, longer-duration production behavior, and the other limits above remain unverified.
 
