@@ -44,6 +44,6 @@ jobs:
       - name: Verify wheel contents, license and reproducibility
         run: >-
           uv run --locked python scripts/verify_wheel.py
-          outputs/build-a/everyinfra_docs_crawler-0.1.0.dev0-py3-none-any.whl
-          outputs/build-b/everyinfra_docs_crawler-0.1.0.dev0-py3-none-any.whl
+          outputs/build-a/everyinfra_docs_crawler-0.1.0-py3-none-any.whl
+          outputs/build-b/everyinfra_docs_crawler-0.1.0-py3-none-any.whl
           --output outputs/wheel-verification.json
